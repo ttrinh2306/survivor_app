@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend  # Path to the frontend Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80"  # Expose port 3000 on the host and map to Nginx port 80
+    depends_on:
+      - backend    # Ensure the backend service is started before the frontend
+    networks:
+      - app-network  
+
+  backend:
+    build: ./backend  # Path to the backend Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"  # Expose port 5000 on the host and container
+    networks:
+        - app-network      
+    environment:
+      FLASK_ENV: development  # Set Flask environment to development
+
+networks:
+  app-network:
+    driver: bridge
