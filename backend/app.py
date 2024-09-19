@@ -11,7 +11,7 @@ import ast
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://3.144.138.186/"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 # Load BERT model and tokenizer

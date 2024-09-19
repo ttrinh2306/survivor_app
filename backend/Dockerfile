@@ -4,6 +4,13 @@ FROM python:3.12-slim
 # Set the working directory in the container
 WORKDIR /app
 
+# Install any needed packages 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libhdf5-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy the requirements.txt file to install dependencies
 COPY requirements.txt .
 
