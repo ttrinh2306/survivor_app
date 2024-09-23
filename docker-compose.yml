@@ -19,7 +19,7 @@ services:
     networks:
         - app-network      
     environment:
-      FLASK_ENV: development  # Set Flask environment to development
+      FLASK_APP=app.py # Set Flask environment to development
 
 networks:
   app-network:
